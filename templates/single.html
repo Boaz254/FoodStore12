@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Product</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <style>
+       
+        .row1 {
+            max-width: 450px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Include navbar -->
+        {% include 'navbar.html' %}
+        <section class="row">
+            <div class="col-md-6 p-2">
+                <img src="{{ url_for('static', filename='images/' + product[4]) }}" alt="Product Image" class="w-100">
+            </div>
+        
+            <div class="col-md-6 row1">
+                <!-- Title -->
+                <h3 class="text-warning">{{ product[1] }}</h3>
+                <p>{{ product[2] }}</p> <!-- Description -->
+                <b class="text-primary">Category: {{ product[5] }}</b>
+                <br>
+                <b class="text-danger">Cost: Kshs. {{ product[3] }}</b> 
+                <br><br>
+        
+                <!-- Check if user is logged in -->
+                {% if session['key'] %}
+                    <!-- Add to Cart Form -->
+                    <h4>Add to Cart</h4>
+                    <form action="{{ url_for('cart') }}" method="post">
+                        <input type="hidden" name="product_id" value="{{ product[0] }}">
+                        <input type="hidden" name="action" value="add">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                    <br>
+        
+                    <!-- Proceed to Checkout Option -->
+                    <h4>Proceed to Checkout</h4>
+                    <form action="{{ url_for('checkout') }}" method="post">
+                        <input type="hidden" name="product_id" value="{{ product[0] }}">
+                        <input type="hidden" name="amount" value="{{ product[3] }}">
+                        <input type="hidden" name="product_name" value="{{ product[1] }}">
+                        <button type="submit" class="btn btn-success">Go to Checkout</button>
+                    </form>
+                {% else %}
+                    <!-- User is not logged in -->
+                    <h4 class="text-dark">Please sign in to make a purchase</h4>
+                    <a href="/login" class="btn btn-danger btn-sm">Login</a>
+                {% endif %}
+            </div>
+        </section>
+        
+    </div>
+
+</html>
+
+
+

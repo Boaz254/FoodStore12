@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodStore</title>
+<style>
+    .promo-marquee {
+        background-color: #28a745; /* Green background */
+        color: white; /* White text color */
+        padding: 10px; /* Padding around the text */
+        font-size: 1.2em; /* Font size */
+        overflow: hidden; /* Hide overflow */
+        white-space: nowrap; /* Prevent text wrapping */
+        position: relative; /* Required for absolute positioning of inner span */
+    }
+
+    .marquee-content {
+        display: inline-block; /* Allow for animation */
+        animation: marquee 10s linear infinite; /* Animation settings */
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(100%); /* Start from right */
+        }
+        100% {
+            transform: translateX(-100%); /* End on the left */
+        }
+    }
+</style>
+
+    
+
+    <!-- css supporting files -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- jss supporting files -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+
+  
+    
+</head>
+<body >
+
+    {% include'navbar.html' %}
+
+        {% include'carousel.html' %}
+
+    <div class="container-fluid">
+        <!-- insert navbar.html using jinja2 templates -->
+        
+
+        
+        
+
+
+         <!-- insert all fruits from DB -->
+         <br>
+         <h3 class="bg-success text-white p-2 text-center">FRUITS</h3>
+         <section class="slider p-4">
+            <ul class="cs-hidden autoWidth">
+                <!-- We store the phones in a item variable called phones  -->
+                <!-- We need to loop all the phones to get a single phone item  -->
+                <!-- each single phone item has index from 0-4 where -->
+                <!-- index 0 is product_id, index 1 is product_name, index 2 is product_desc, index 3 is product_cost, index 4 is product_category and index 4 is product_image_name.  -->
+
+                <!-- loop all the phone items -->
+                {% for singlefruit in fruits %}
+                    <li>
+                        <div class="box">
+                            <div class="slide-img">
+                                <img src="../static/images/{{ singlefruit [4] }}" alt="{{singlefruit[1]}}" width="40" height="40">
+                                
+                                <!-- put an overlay button  -->
+                                <div class="overlay">
+                                    <a href="/single/{{singlefruit[0]}}" class="buy-btn">Buy Now</a>
+                                </div>                     
+                            </div>
+
+                            <div class="detail-box">
+                                {{ singlefruit[1] }} <br> <b class="text-success">Kshs. {{ singlefruit[3] }}</b>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+
+                <!-- End of forloop -->
+                {% endfor %}
+
+            </ul>
+         </section>
+         <br>
+         <h3 class="bg-success text-white p-2 text-center">VEGETABLES</h3>
+         <section class="slider p-4">
+            <ul class="cs-hidden autoWidth">
+                <!-- We store the phones in a item variable called phones  -->
+                <!-- We need to loop all the phones to get a single phone item  -->
+                <!-- each single phone item has index from 0-4 where -->
+                <!-- index 0 is product_id, index 1 is product_name, index 2 is product_desc, index 3 is product_cost, index 4 is product_category and index 4 is product_image_name.  -->
+
+                <!-- loop all the phone items -->
+                {% for singlevegetables in vegetables %}
+                    <li>
+                        <div class="box">
+                            <div class="slide-img">
+                                <img src="../static/images/{{ singlevegetables [4] }}" alt="{{singlevegetables[1]}}" width="40" height="40">
+                                
+                                <!-- put an overlay button  -->
+                                <div class="overlay">
+                                    <a href="/single/{{singlevegetables[0]}}" class="buy-btn">Buy Now</a>
+                                </div>                    
+                            </div>
+
+                            <div class="detail-box">
+                                {{ singlevegetables[1] }} <br> <b class="text-success">Kshs. {{ singlevegetables[3] }}</b>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+
+                <!-- End of forloop -->
+                {% endfor %}
+
+            </ul>
+         </section>
+         <br>
+         <h3 class="bg-success text-white p-2 text-center">PASTRY</h3>
+         <section class="slider p-4">
+            <ul class="cs-hidden autoWidth">
+                <!-- We store the phones in a item variable called phones  -->
+                <!-- We need to loop all the phones to get a single phone item  -->
+                <!-- each single phone item has index from 0-4 where -->
+                <!-- index 0 is product_id, index 1 is product_name, index 2 is product_desc, index 3 is product_cost, index 4 is product_category and index 5 is product_image_name.  -->
+
+                <!-- loop all the phone items -->
+                {% for singledairy in dairy %}
+                    <li>
+                        <div class="box">
+                            <div class="slide-img">
+                                <img src="../static/images/{{ singledairy [4] }}" alt="{{singledairy[1]}}" width="40" height="40">
+                                
+                                <!-- put an overlay button  -->
+                                <div class="overlay">
+                                    <a href="/single/{{singledairy[0]}}" class="buy-btn">Buy Now</a>
+                                </div>                      
+                            </div>
+
+                            <div class="detail-box">
+                                {{ singledairy[1] }} <br> <b class="text-success">Kshs. {{ singledairy[3] }}</b>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+
+                <!-- End of forloop -->
+                {% endfor %}
+
+            </ul>
+         </section>
+         <br>
+         <h3 class="bg-success text-white p-2 text-center">DAIRY</h3>
+         <section class="slider p-4">
+            <ul class="cs-hidden autoWidth">
+                <!-- We store the phones in a item variable called phones  -->
+                <!-- We need to loop all the phones to get a single phone item  -->
+                <!-- each single phone item has index from 0-4 where -->
+                <!-- index 0 is product_id, index 1 is product_name, index 2 is product_desc, index 3 is product_cost, index 4 is product_category and index 4 is product_image_name.  -->
+
+                <!-- loop all the phone items -->
+                {% for singlepastry in pastry %}
+                    <li>
+                        <div class="box">
+                            <div class="slide-img">
+                                <img src="../static/images/{{ singlepastry [4] }}" alt="{{singlepastry[1]}}" width="40" height="40">
+                                
+                                <!-- put an overlay button  -->
+                                <div class="overlay">
+                                    <a href="/single/{{singlepastry[0]}}" class="buy-btn">Buy Now</a>
+                                </div>                     
+                            </div>
+
+                            <div class="detail-box">
+                                {{ singlepastry[1] }} <br> <b class="text-success">Kshs. {{ singlepastry[3] }}</b>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+
+                <!-- End of forloop -->
+                {% endfor %}
+
+            </ul>
+         </section>
+         <br>
+         <h3 class="bg-success text-white p-2 text-center">DRINKS</h3>
+         <section class="slider p-4">
+            <ul class="cs-hidden autoWidth">
+                <!-- We store the phones in a item variable called phones  -->
+                <!-- We need to loop all the phones to get a single phone item  -->
+                <!-- each single phone item has index from 0-4 where -->
+                <!-- index 0 is product_id, index 1 is product_name, index 2 is product_desc, index 3 is product_cost, index 4 is product_category and index 4 is product_image_name.  -->
+
+                <!-- loop all the phone items -->
+                {% for singledrink in drinks %}
+                    <li>
+                        <div class="box">
+                            <div class="slide-img">
+                                <img src="../static/images/{{ singledrink [4] }}" alt="{{singledrink[1]}}" width="40" height="40">
+                                
+                                <!-- put an overlay button  -->
+                                <div class="overlay">
+                                    <a href="/single/{{singledrink[0]}}" class="buy-btn">Buy Now</a>
+                                </div>                    
+                            </div>
+
+                            <div class="detail-box">
+                                {{ singledrink[1] }} <br> <b class="text-success">Kshs. {{ singledrink[3] }}</b>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+
+                <!-- End of forloop -->
+                {% endfor %}
+
+            </ul>
+         </section>
+
+
+    </div>
+
+
+    <!-- Include the footer  -->
+    <!-- We use jinja2 template  -->
+    {%   include'footer.html'   %}
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- jss supporting files -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <style>
+        /* Existing styles */
+        .body {
+            background-image: url("{{ url_for('static', filename='images/search-1756278_1280.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .accordion, .faq-form-container {
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .accordion {
+            margin-right: 20px;
+        }
+        .accord{ 
+            color: #ec0d96;
+            font-size: 20px;
+            background-color: #e2d4dd;
+            border-radius: 5px;
+            padding: 20px;
+
+        }
+
+        .faq-form-container {
+            max-width: 90%;
+            
+
+        }
+
+        /* Flexbox container to align accordion and form side-by-side */
+        .faq-layout {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            .faq-layout {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="body">
+
+    {% include 'navbar.html' %}
+    <br>
+    <div class="Faqs">
+        <h1 align="center" class="text-success">Welcome to Our FAQs Page!</h1>
+    </div>
+
+    <div align="center" class="accord">
+        <p>
+             We know that shopping online can sometimes lead to questions, so we've gathered the most common inquiries to help you get the information you need quickly and easily. Here, you'll find answers to questions about our products, ordering process, payment methods, delivery options, and more.
+            
+            If you can't find what you're looking for, please feel free to reach out to our customer support team. We're here to help make your experience as smooth as possible.</p>
+    </div>
+    <br>
+    <div class=" accord1 accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    What types of products do you offer?
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse"                     data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We offer a variety of fresh fruits, vegetables, beverages, pastries, and dairy products.</div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    How do I place an order?
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">You can browse our categories, select your items, and add them to your cart. Once you're ready, proceed to checkout.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Do you offer delivery?
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Yes, we provide delivery services to local areas. Check our delivery options during checkout.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    What are your delivery charges?
+                </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Delivery charges vary based on location and order size. You can view the charges during the checkout process.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                    Are your products organic?
+                </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We offer both organic and non-organic options. You can filter products based on your preference.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                    How do I know if the products are fresh?
+                </button>
+            </h2>
+            <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We source our products daily from local farmers and suppliers to ensure freshness.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                    Do you offer gluten-free or vegan options?
+                </button>
+            </h2>
+            <div id="flush-collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Yes, we have a selection of gluten-free and vegan products available. Look for labels on the product pages.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                    What payment methods do you accept?
+                </button>
+            </h2>
+            <div id="flush-collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We accept various payment methods, including Mpesa and Cash payments. In addition, we are working to incorporate other payment methods, including Paypal, Credit Cards, and Digital Wallets.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                    Do you offer refunds or exchanges?
+                </button>
+            </h2>
+            <div id="flush-collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">We have a refund policy in place for damaged or unsatisfactory products. Please contact customer service for assistance.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                    How can I contact customer support?
+                </button>
+            </h2>
+            <div id="flush-collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">You can reach our customer support team via email, phone, or the contact form on our website.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
+                    What are your customer service hours?
+                </button>
+            </h2>
+            <div id="flush-collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Our customer service is available from 8am - 8pm every day.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                    Can I create an account?
+                </button>
+            </h2>
+            <div id="flush-collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Yes, creating an account allows you to track orders, save favorites, and receive special offers.</div>
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThirteen" aria-expanded="false" aria-controls="flush-collapseThirteen">
+                    Do you offer bulk purchases?
+                </button>
+            </h2>
+            <div id="flush-collapseThirteen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Yes, we offer bulk purchasing options for many products. Contact us for pricing and availability.</div>
+            </div>
+        </div>
+        <br>
+
+        <div class="faq-form-container">
+            <h3 align="center" class="text-danger">Have a Question? Ask Us!</h3>
+            <form action="/submit_question" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="question">Your Question</label>
+                    <textarea class="form-control" id="question" name="question" rows="4" placeholder="Enter your question" required></textarea>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Submit Question</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+    
+    
+      {% include 'footer.html' %}
+
+      
+
+
+</body>
+</html>

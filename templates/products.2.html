@@ -1,0 +1,104 @@
+<!-- Product Container -->
+<div class="product-container">
+
+    <!-- Product Image & Gallery -->
+    <div class="product-images">
+        <img src="[Main Product Image URL]" alt="[Product Name]" class="main-image">
+        <div class="">
+            <img src="../static/images/plums-3214274_1280.jpg" alt="Plums">
+            <img src="[Thumbnail Image 2]" alt="[Product Name] thumbnail 2">
+            <img src="[Thumbnail Image 3]" alt="[Product Name] thumbnail 3">
+        </div>
+    </div>
+
+    <!-- Product Information -->
+    <div class="product-info">
+        <h1>[Product Name]</h1>
+        <p class="category-label">Category: [Fruit, Vegetable, Dairy, Pastry, Drink]</p>
+
+        <!-- Offers Section -->
+        <div class="product-offers">
+            <h2>Special Offers</h2>
+            <p class="offer-details">Save 20% on orders above $50!</p>
+            <p class="offer-details">Buy 2 Get 1 Free on selected items.</p>
+            <p class="offer-expiry">*Offers valid until [Expiry Date]</p>
+        </div>
+
+        <!-- Price and Discounted Price -->
+        <p class="price">
+            Original Price: <span class="original-price">$[Original Price]</span>
+        </p>
+        <p class="discounted-price">Discounted Price: $[Discounted Price]</p>
+
+        <!-- Description -->
+        <section class="description">
+            <h2>About This Product</h2>
+            <p>[A detailed description of the product, covering features like freshness, taste, or origin.]</p>
+        </section>
+
+        <!-- Stock and Quantity Selection -->
+        <p class="stock-status">In Stock / Out of Stock</p>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+
+        <!-- Add to Cart and Wishlist -->
+        <button class="add-to-cart">Add to Cart</button>
+        <button class="wishlist">Add to Wishlist</button>
+
+        <!-- Subscription Options (Optional) -->
+        <div class="subscription-options">
+            <h3>Subscribe for Weekly Deliveries</h3>
+            <p>Save 10% with weekly orders!</p>
+            <button class="subscribe">Subscribe</button>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Product Details -->
+<div class="additional-details">
+
+    <!-- Nutritional Information for Relevant Categories -->
+    <section class="nutrition-info">
+        <h2>Nutritional Information</h2>
+        <table>
+            <tr><th>Calories</th><td>[Calories]</td></tr>
+            <tr><th>Protein</th><td>[Protein]</td></tr>
+            <tr><th>Fats</th><td>[Fats]</td></tr>
+            <tr><th>Carbohydrates</th><td>[Carbohydrates]</td></tr>
+            <tr><th>Sugars</th><td>[Sugars]</td></tr>
+        </table>
+    </section>
+
+    <!-- Expiration or Shelf Life -->
+    <section class="expiration">
+        <h2>Shelf Life</h2>
+        <p>[Display shelf life for perishables, e.g., "Use within 5 days" or expiration date.]</p>
+    </section>
+
+    <!-- Customer Reviews and Ratings -->
+    <section class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p class="review-text">"[Customer review]"</p>
+            <p class="review-rating">Rating: ⭐⭐⭐⭐</p>
+        </div>
+        <!-- Form to add a review -->
+        <form action="submit_review" method="post">
+            <label for="review-text">Leave a review:</label>
+            <textarea id="review-text" name="review" rows="4" required></textarea>
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+            </select>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+</div>
+{%   include'footer.html'   %}
+
+</body>
+</html>

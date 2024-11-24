@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>FoodStore</title>
+
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/css/lightslider.css">
+        <link rel="stylesheet" href="../static/css/style.css">
+
+        <!-- jss supporting files -->
+        <script src="../static/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/lightslider.js"></script>
+        <script src="../static/js/script.js"></script>
+        <!-- cart.html -->
+        <style>
+            .body{ 
+                background-image: url("{{ url_for('static', filename='images/cart1.jpg') }}");
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+            }
+            .container{ 
+                max-width: 500px; 
+                margin: 50px auto; 
+                padding: 20px;
+                background-color: #d63384; 
+                border-radius: 5px; 
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+
+            }
+        </style>
+    </head>
+
+    <body class="body">
+        {% include'navbar.html' %}
+
+        <div class="container">
+            <h2 align="center" class="text-warning">Your Cart</h2>
+            {% if cart_items %}
+                <ul>
+                    {% for item in cart_items %}
+                        <li>
+                            <h5>{{ item[1] }}</h5>
+                            <p>Price: Kshs. {{ item[3] }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p> {{ total_cost }}</p>
+                <a href="{{ url_for('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
+            {% else %}
+                <p>Your cart is empty!</p>
+            {% endif %}
+        </div>
+
+    
+    </body>
+</html>
+
+

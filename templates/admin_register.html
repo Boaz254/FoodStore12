@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Admin Sign Up</h2>
+        <form action="/admin/register" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register as Admin</button>
+        </form>
+        <br>
+        <a href="/login">Already have an account? Login here</a>
+    </div>
+</body>
+</html>

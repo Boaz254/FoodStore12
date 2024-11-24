@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <script src="../static/js/bootstrap.js"></script>
+        <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #20c997;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    </head>
+    <body class="body">
+        {% include 'navbar.html' %}
+        <br>
+        <br>
+        <div class="form-container ">
+            <h2 class="text-center">Register</h2>
+            <b class="text-danger">{{ error }}</b>
+            <b class="text-success">{{ message }}</b>
+            
+            <form action="/register" method="post">
+            
+                
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" required>
+                
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" name="email" required>
+                
+                <label for="gender">Gender</label>
+                <select class="form-select" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" name="phone" required>
+                
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" required>
+        
+                <label for="user_type">Role:</label>
+                <select class="form-select" name="user_type" required>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                
+                <input class="btn btn-primary" type="submit" value="Register">
+                <br>
+                <a href="/login">Already have an Account? Click to login</a>
+            </form>
+        </div>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>More About Us</title>
+
+    <!-- CSS supporting files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- JS supporting files -->
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+    
+
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .section-card {
+    
+            background-color: #fdfbfbe7;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .icon {
+            font-size: 30px;
+            margin-right: 10px;
+            color: #0dcaf0;
+            
+        }
+        .section-p {
+            font-size: 30px;
+            margin-right: 10px;
+            color: #222221e7;
+            margin-top: 10px;
+            font-size: 1.2em;
+            
+        }
+        .section3 {
+            padding: 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .section3 h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section3 h2 .icon {
+            margin-right: 10px;
+            color: #0dcaf0;
+        }
+
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            flex: 1 1 200px;
+            max-width: 220px;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 80px; /* Size of the circle */
+            height: 80px; /* Ensure the image is square */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image covers the circle */
+            display: block;
+            margin: 0 auto 20px; 
+        
+        }
+
+        .team-member p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .team-member p strong {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .review-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+        .section1 {
+            padding: 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .section1 h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section1 h2 .icon {
+            margin-right: 10px;
+            color: #0dcaf0;
+        }
+
+        .review-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 15px;
+        }
+
+        .review-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .review-item p strong {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        /* Section styling */
+        .section4 {
+            padding: 40px;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+
+        /* Section heading styling */
+        .section4 h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Icon styling in heading */
+        .section4 h2 .icon {
+            color: #0dcaf0;
+        }
+
+        /* Contact information container */
+        .contact-info {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        /* Contact info item styling */
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        /* Hover effect for contact info items */
+        .contact-info p:hover {
+            transform: scale(1.05);
+            background-color: #e6f7ff;
+        }
+
+        /* Icon styling in contact info items */
+        .contact-info .icon {
+            font-size: 1.5rem;
+            color: #0dcaf0;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .color1{
+            color: #f02f2f;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+<div class="container">
+    <!-- Mission, Vision, and Core Values Section -->
+    <div class="section">
+        <div class="section-card">
+            <h2><i class="fas fa-bullseye icon"></i>Our Mission</h2>
+            <p class="section-p">Our mission is to provide quality, fresh, and affordable products to our customers while supporting local farmers and promoting sustainable practices.</p>
+        </div>
+        <div class="section-card"> 
+            <h2><i class="fas fa-eye icon"></i>Our Vision</h2>
+            <p class="section-p">We envision a world where everyone has easy access to healthy and nutritious food choices that contribute to a sustainable future.</p>
+        </div>
+        <div class="section-card">
+            <h2><i class="fas fa-handshake icon"></i>Our Core Values</h2>
+            <p class="section-p">We are committed to quality, sustainability, integrity, and community support. These values drive every aspect of our operations.</p>
+        </div>
+    </div>
+    <br>
+
+    <!-- Customer Reviews Section -->
+    <div class="section1">
+        <h2><i class="fas fa-comments icon"></i>Customer Reviews</h2>
+        <ul id="customer-reviews" class="lightSlider">
+            <li class="review-item">
+                <p><strong>John Doe</strong></p>
+                <p>"Great products and excellent customer service! Highly recommended."</p>
+            </li>
+            <li class="review-item">
+                <p><strong>Jane Smith</strong></p>
+                <p>"I've never been disappointed with my purchases. Fresh and high-quality items every time!"</p>
+            </li>
+            <li class="review-item">
+                <p><strong>Mike Johnson</strong></p>
+                <p>"I love supporting a business that cares about sustainability. Will continue to shop here!"</p>
+            </li>
+        </ul>
+    </div>
+    
+    <br>
+    <br>
+
+
+    <!-- Our Team Section -->
+    <div class="section3">
+        <h2><i class="fas fa-users icon"></i>Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/boaz.jpg') }}" alt="Team Member 1">
+                <p><strong> Boaz Mittoh</strong></p>
+                <p class="text-danger">Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/.jpg') }}" alt="Team Member 2">
+                <p><strong> Effy Beuter</strong></p>
+                <p class="text-danger">Operations Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/.jpg') }}" alt="Team Member 3">
+                <p><strong> Becky Dee</strong></p>
+                <p class="text-danger">Marketing Head</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="section4">
+        <h2><i class="fas fa-envelope icon"></i>Contact Information</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-phone icon"></i>Phone: +254 701 073 857</p>
+            <p><i class="fas fa-envelope icon"></i>Email: info@foodstore.com</p>
+            <p><i class="fas fa-map-marker-alt icon"></i>Address: 3090, Moi Avenue - Mombasa</p>
+            <p><i class="fas fa-globe icon"></i>Website: www.foodstore.com</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#customer-reviews").lightSlider({
+            item: 1,
+            auto: true,
+            loop: true,
+            pager: true,        // Show dots for navigation
+            controls: false,    // Hide next/previous controls
+            adaptiveHeight: true, // Automatically adjust height to fit content
+            slideMargin: 10,
+            enableDrag: true,
+            speed: 800,         // Increase transition speed for smoother effect
+            pauseOnHover: true,
+            onSliderLoad: function(el) {
+                el.lightGallery({ // Initialize lightGallery if you want an image gallery option
+                    selector: '#customer-reviews .review-item'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

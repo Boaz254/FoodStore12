@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- jss supporting files -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <head>
+        <!-- Other head elements -->
+        <style>
+            /* General body styling */
+            .body {
+                background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 20px;
+                font-family: Arial, sans-serif;
+            }
+        
+            /* Styling for the introduction section with image */
+            .intro-section {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 8px;
+            }
+        
+            .intro-section img {
+                width: 400px;
+                height: 300px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        
+            .intro-text {
+                color: #2c3e50;
+                font-size: 1.5rem;
+            }
+        
+            /* Styling for the contact form and details */
+            .contact-section {
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                padding: 20px;
+                background-color: #f7f2f7;
+                border-radius: 8px;
+            }
+
+            .contact-container {
+                margin: 40px auto;
+                padding: 20px;
+                max-width: 600px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+        
+            .Form {
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                width: 400px;
+                height: 400px;
+            }
+        
+            .custom-label {
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 5px;
+                display: block;
+                font-size: 1rem;
+                transition: color 0.3s;
+            }
+        
+            .custom-label:hover {
+                color: #3498db;
+            }
+        
+            /* Styling for contact details */
+            .contact-details h1 {
+                color: #eb0808;
+                font-size: 1.5rem;
+            }
+        
+            .contact-details p {
+                font-size: 1.5rem;
+                color: #2c3e50;
+            }
+            .pro{
+                background-image: url("{{ url_for('static', filename='images/pro.jpg') }}");
+                background-color: #a9f5f0;
+                padding: 10px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        </style>
+        
+        <body class="body">
+            {% include 'navbar.html' %}
+
+            <br>
+
+            <div class="pro">
+                <h1 class="text-center mb-4 text-success">Talk To Us</h1>
+            </div>
+            <br>
+        
+            <br>
+        
+            <!-- Introduction Section with Image and Text -->
+            <div class="intro-section">
+                <img src="{{ url_for('static', filename='images/contact-us-2993000_1280.jpg') }}" alt="Contact Us">
+                <p class="intro-text">
+                    We’d Love to Hear From You! Whether you have questions, need assistance, or just want to share feedback, you’ve come to the right place. Our team is here to help make your experience as easy and enjoyable as possible.<br><br>
+                    Below, you’ll find several ways to contact us. You can send us an email, give us a call, or fill out the contact form. We aim to respond to all inquiries as quickly as possible, usually within 24-48 hours.<br><br>
+                    Don’t hesitate to get in touch — we’re here for you!
+                </p>
+            </div>
+        
+            <br>
+            
+        
+            <!-- Contact Form and Contact Details Section -->
+            <div class="contact-section">
+                <!-- Contact Form -->
+                <div class="Form">
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label custom-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number" required>
+        
+                        <label for="emailAddress" class="form-label custom-label">Email Address</label>
+                        <input type="email" class="form-control" id="emailAddress" placeholder="name@example.com" required>
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="message" class="form-label custom-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Write your message here..." required></textarea>
+                    </div>
+        
+                    <button class="btn btn-primary" type="submit">Send Message</button>
+                </div>
+        
+                <!-- Contact Details -->
+                <div class="contact-details">
+                    <h1>Contact Details</h1>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> Address: Mwembe Tayari, Mombasa, Kenya<br>
+                        <i class="fas fa-phone"></i> Phone: <a href="tel:+254701073857">+254 701 073857</a><br>
+                        <i class="fas fa-envelope"></i> Email: <a href="mailto:info@fishsmart.co.ke">foodstore@info.co.ke</a>
+                    </p>
+                </div>
+                
+            </div>
+        
+            <br>
+        
+            {% include 'footer.html' %}
+        </body>
+        
+    </body>
+    </html>
+    

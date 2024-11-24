@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <script src="../static/js/bootstrap.js"></script>
+
+        <style>
+            .body {
+                background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .login-container {
+                max-width: 400px; 
+                margin: 50px auto; 
+                padding: 20px;
+                background-color: #20c997; 
+                border-radius: 5px; 
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            }
+            
+        </style>
+    </head>
+    <body class="body">
+        {% include 'navbar.html' %}
+        
+
+        
+        <div class="login-container">
+            <h2 class="text-center">Login</h2>
+            <b class="text-warning">{{message}}</b>
+            <b class="text-danger">{{error}}</b>
+        
+            <form action="/login" method="post">
+                <label for="email">Email Address or Username</label>
+                <input type="text" class="form-control" name="email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" required>
+                
+            
+                <label for="user_type">Role:</label>
+                <select class="form-select" name="user_type" required>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <br>
+
+            
+                <input align="center" class="btn btn-primary" type="submit" value="Login">
+                <br>
+                <a href="/register">Don't have an Account? Click to register</a>
+            </form>
+            
+        </div>
+
+
+        
+    </body>
+</html>

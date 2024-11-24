@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <style>
+        /* Apply the background image to the entire body */
+        .body {
+            background-image:  url("{{ url_for('static', filename='images/240_F_939373128_AzG636Avw2NnDkDKBs9YyZ4zQFMIAtKv.jpg') }}");
+            background-size: cover;         /* Ensures the image covers the whole screen */
+            background-position: center;    /* Centers the image */
+            background-attachment: fixed;   /* Keeps the image fixed on scroll */
+            background-repeat: no-repeat;   /* Prevents tiling */
+        }
+        
+        /* Additional styles to adjust text readability over background */
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the navbar  -->
+    {%  include 'navbar.html' %}
+    <br>
+    <section class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow p-5">
+                {% if message %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endif %}
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <h1 class="text-center text-warning mb-4">Upload Products</h1>
+                <form action="/admin" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="product_name" class="form-label">Product Name:</label>
+                        <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter product name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc" class="form-label">Description</label>
+                        <input type="text" class="form-control" name="desc" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product_category" class="form-label">Category:</label>
+                        <select id="product_category" name="product_category" class="form-select" required>
+                            <option value="" disabled selected>Select category</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Pastry">Pastry</option>
+                            <option value="Drinks">Drinks</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product_cost" class="form-label">Cost (KES):</label>
+                        <input type="number" id="product_cost" name="product_cost" class="form-control" placeholder="Enter cost" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product_image_name" class="form-label">Product Image:</label>
+                        <input type="file" id="product_image_name" name="product_image_name" class="form-control" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-100">Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

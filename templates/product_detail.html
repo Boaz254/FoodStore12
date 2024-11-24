@@ -1,0 +1,53 @@
+<style>
+    .product-gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-image {
+        width: 80%;
+        max-height: 400px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+    
+    .thumbnails {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .thumbnails img {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.3s;
+    }
+    
+    .thumbnails img:hover {
+        border-color: #333;
+    }
+    
+</style>
+
+
+<div class="product-gallery">
+    <!-- Main Image -->
+    <img src="{{ product.product_image_name }}" alt="{{ product.product_name }}" id="main-image" class="main-image">
+
+    <!-- Thumbnail Images -->
+    <div class="thumbnails">
+        <img src="{{ product.product_image_name }}" alt="{{ product.product_name }}" onclick="setMainImage(this.src)">
+        {% for image in images %}
+            <img src="{{ image.image_url }}" alt="{{ image.alt_text }}" onclick="setMainImage(this.src)">
+        {% endfor %}
+    </div>
+</div>
+
+<!-- JavaScript for image switcher -->
+<script>
+    function setMainImage(src) {
+        document.getElementById("main-image").src = src;
+    }
+</script>

@@ -1,0 +1,145 @@
+<style>
+    .footer-section {
+        background-color: #18832f;
+        color: #f8f9fa;
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .footer-section h2 {
+        font-size: 22px;
+        color: #ffcc00;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        font-size: 16px;
+        color: #d1d8e0;
+        line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+        color: #ffcc00;
+        text-decoration: none;
+    }
+
+    .footer-section .social-icons img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        transition: transform 0.3s;
+    }
+
+    .footer-section .social-icons img:hover {
+        transform: scale(1.2);
+    }
+
+    .footer-section .newsletter-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 30px;
+        color: #333;
+        text-align: center;
+    }
+
+    .footer-section .newsletter-section h2 {
+        color: #18832f;
+        margin-bottom: 15px;
+    }
+
+    .footer-section .newsletter-section input[type="email"] {
+        padding: 10px;
+        border: 1px solid #18832f;
+        border-radius: 5px 0 0 5px;
+        width: 70%;
+        max-width: 300px;
+    }
+
+    .footer-section .newsletter-section button {
+        padding: 10px 20px;
+        background-color: #18832f;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .footer-section .newsletter-section button:hover {
+        background-color: #145726;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #d1d8e0;
+        padding-top: 15px;
+        margin-top: 30px;
+        text-align: center;
+        color: #b3b8c2;
+        font-size: 14px;
+    }
+
+    .footer-bottom .desgn {
+        color: #ffcc00;
+        font-weight: 600;
+    }
+    .hen{ 
+        width: 130px; /* Size of the circle */
+        height: 130px; /* Ensure the image is square */
+        border-radius: 80%; /* Makes the image circular */
+        object-fit: cover; /* Ensures the image covers the circle */
+        display: block;
+        margin: 0 auto 20px;
+
+    }
+</style>
+
+<section class="footer-section">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="../static/images/Preview.png" alt="Logo" width="150px" height="150px" class="hen d-block mx-auto mb-3">
+            <p>Your one-stop destination for fresh vegetables, fruits, drinks, pastries, and dairy products.</p>
+        </div>
+        <div class="col-md-3">
+            <h2>Links</h2>
+            <a href="/" class="d-block"><strong>Home</strong></a>
+            <a href="/products" class="d-block"><strong>Products</strong></a>
+            <a href="/contactus" class="d-block"><strong>Contact Us</strong></a>
+            <a href="/about" class="d-block"><strong>About Us</strong></a>
+            <a href="/FAQs" class="d-block"><strong>FAQs</strong></a>
+        </div>
+        <div class="col-md-3">
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:foodstore@info.com">foodstore@info.com</a></p>
+            <p>Phone: <a href="tel:+254701073857">+254 701 073 857</a></p>
+            <p>Address: Mwembe Tayari, Mombasa</p>
+        </div>
+        <div class="col-md-3">
+            <h2>Follow Us</h2>
+            <div class="social-icons">
+                <a href="https://twitter.com/yourprofile" target="_blank"><img src="../static/images/x.png" alt="Twitter"></a>
+                <a href="https://facebook.com/yourprofile" target="_blank"><img src="../static/images/fb.png" alt="Facebook"></a>
+                <a href="https://instagram.com/yourprofile" target="_blank"><img src="../static/images/in.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="newsletter-section row mt-4">
+        <div class="col-md-6 mx-auto">
+            <h2>Subscribe to our Newsletter</h2>
+            <form action="/subscribe" method="post">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Enter your email" required class="form-control">
+                    <button type="submit" class="btn">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-bottom mt-5">
+        <p>&copy; 2024 Food Store. All Rights Reserved.</p>
+        <p>Designed by <span class="desgn">BOAZ</span></p>
+    </div>
+</section>

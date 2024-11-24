@@ -1,0 +1,112 @@
+
+
+<style>
+  .carousel-inner .carousel-item img {
+      height: 500px; /* Set a consistent height for all slides */
+      object-fit: cover; /* Ensures the images fill the width and height without distortion */
+  }
+
+  .carousel-caption {
+      background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for better readability */
+      padding: 20px;
+      border-radius: 5px;
+  }
+
+  .carousel-caption h5 {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ffcc00; /* Brighter color for the title */
+  }
+
+  .carousel-caption p {
+      font-size: 1.2em;
+      color: #ffffff;
+  }
+
+  /* Custom arrow styling */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+      filter: invert(100%); /* Makes the arrows white for visibility */
+      background-color: rgba(0, 0, 0, 0.3); /* Adds a background for better contrast */
+      border-radius: 50%;
+      padding: 10px;
+  }
+
+  /* Indicator styling */
+  .carousel-indicators button {
+      background-color: #ffcc00; /* Matches the accent color of the site */
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      opacity: 0.7;
+  }
+  .carousel-indicators .active {
+      background-color: #ff8c00; /* Brighter color for active indicator */
+      opacity: 1;
+  }
+  /* Marquee styling */
+  .marquee-container {
+      background-color: #ffcc00; /* Bright background for visibility */
+      color: #ec0d0d;
+      padding: 30px 0;
+      font-weight: bold;
+      font-size: 1.2em;
+      overflow: visible;
+      position: relative;
+  }
+  .marquee-text {
+      display: inline-block;
+      white-space: nowrap;
+      position: absolute;
+      animation: marquee 10s linear infinite;
+  }
+  @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+  }
+</style>
+
+<div class="marquee-container">
+  <div class="marquee-text">🎉 Special Offers: Enjoy up to 20% off on all fresh vegetables and fruits and Save 20% on orders above Kshs 5000! Limited time only! 🎉</div>
+</div>
+<br>
+<br>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="../static/images/slide1.jpg" class="d-block w-100" alt="Mixed Fruit">
+          <div class="carousel-caption d-md-block">
+              <h5>Fresh & Juicy Mixed Fruits</h5>
+              <p>Enjoy a healthy selection of seasonal fruits directly sourced from organic farms.</p>
+          </div>
+      </div>
+      <div class="carousel-item">
+          <img src="../static/images/slide4.jpg" class="d-block w-100" alt="Mixed Vegetables">
+          <div class="carousel-caption d-md-block">
+              <h5>Fresh Fruits & Veggies, From Farm to Table </h5>
+              <p>Experience the freshness and quality in every bite of our farm-fresh vegetables.</p>
+          </div>
+      </div>
+      <div class="carousel-item">
+          <img src="../static/images/slide5.jpg" class="d-block w-100" alt="Pastries and Dairy">
+          <div class="carousel-caption d-md-block">
+              <h5>Delicious Pastries & Dairy</h5>
+              <p>Indulge in our delightful pastries and premium dairy products.</p>
+          </div>
+      </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>

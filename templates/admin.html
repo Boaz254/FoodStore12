@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <!-- Font Awesome -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #dee2e6;
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url("{{ url_for('static', filename='images/tube.webp') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .sidebar {
+            background-color: #495057;
+            color: #fff;
+            width: 250px;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: #c5b806;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            font-size: 1.1em;
+        }
+        .sidebar a:hover {
+            background-color: #ebe8e4;
+        }
+        .header {
+            background-color: #495057;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .img-fluid {
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .content-section {
+            display: none;
+            border-radius: 5px;
+            background-color: #0056b3;
+            background-image: url("{{ url_for('static', filename='images/faqs.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+        .sidebar-img {
+            width: 80px;
+            height: 80px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            display: block;
+            margin: 0 auto 20px; 
+        }
+        .sidebar a i {
+            margin-right: 10px;
+            font-size: 20px; 
+            color: #4CAF50
+        }
+        .dashboard-stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background-color: #c1c4c5;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 23%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card i {
+            font-size: 30px;
+            color: #4CAF50; /* Green color for icons */
+        }
+        
+        .stat-card h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #db1616;
+        }
+        
+        .stat-card p {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        .recent-activity {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .recent-activity li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .recent{ 
+            background-color: #f5f6f7;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        }
+        
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-link {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .quick-link:hover {
+            background-color: #0056b3;
+        }
+        
+        .quick-link i {
+            margin-right: 8px;
+        }
+        .para{ 
+          
+            background-color: #abb1ab;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            color: #000;
+
+        }
+        .button-container {
+            position: absolute;
+            bottom: -100px; /* Adjust as needed for spacing from the bottom */
+            left: 60%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%; /* Optional: Ensures full width of the container */
+        }
+        
+        .button-container .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+        /* Product Card Styling */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.list-group-item {
+    background-color: #f9f9f9;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+        
+        
+        
+        
+        
+    </style>
+</head>
+<body class="body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Circular Image at the top of the sidebar -->
+        <img src="{{ url_for('static', filename='images/Preview.png') }}" alt="Sidebar Image" class="sidebar-img">
+
+
+        <a href="#dashboard" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#add-product" onclick="showSection('add-product')"><i class="fas fa-plus-circle"></i> Add Product</a>
+        <a href="#manage-users" onclick="showSection('manage-users')"><i class="fas fa-users"></i> Manage Users</a>
+        <a href="#manage-admins" onclick="showSection('manage-admins')"><i class="fas fa-user-cog"></i> Manage Admins</a>
+        <a href="#orders" onclick="showSection('orders')"><i class="fas fa-box"></i> Orders</a>
+        <a href="#products" onclick="showSection('products')"><i class="fas fa-apple-alt"></i> Products</a> <!-- Fruit Icon -->
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Header -->
+        <div class="header ">
+            <h1 align="center" class="text-warning">Welcome, Boaz</h1>
+            
+        </div>
+        
+        <div class="container mt-4">
+            {% if error %}
+                <div class="alert alert-danger text-center">{{ error }}</div>
+            {% endif %}
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="content-section">
+                
+                <br>
+
+                <div class="para">
+                    <p align="center" > The following are the stats  overview of the system's performance</p>
+                </div>
+
+                <br>
+                
+                <!-- Stats Cards -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Total Users</h3>
+                        <p>1</p> <!-- Dynamic data could be added here -->
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-box"></i>
+                        <h3>Orders Received</h3>
+                        <p></p> <!-- Dynamic data -->
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-apple-alt"></i> <!-- Fruit Icon -->
+                        <h3>Total Products</h3>
+                        <p>50</p> <!-- Dynamic data -->
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>Revenue</h3>
+                        <p>KES 0</p> <!-- Dynamic data -->
+                    </div>
+                </div>
+
+                <div class="recent">
+                    <h3 class="text-warning">Recent Activity</h3>
+                    <ul class="recent-activity">
+                        <li><strong>Boaz Mittoh</strong> added a new product: <em>Apple</em></li>
+                        <li><strong>Janette</strong> placed an order: <em>Order #1</em></li>
+                        <li><strong>Boaz Mittoh</strong> Rejected new admin: <em>Sam</em></li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+        
+            <!-- Add New Product Section -->
+            <div id="add-product" class="content-section product-grid card">
+                <div class="card-header">
+                    <h2>Add New Product</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/admin" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="desc" class="form-label">Description</label>
+                            <input type="text" class="form-control" name="desc" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Dairy">Dairy</option>
+                                <option value="Pastry">Pastry</option>
+                                <option value="Drinks">Drinks</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cost" class="form-label">Cost (KES)</label>
+                            <input type="number" class="form-control" name="cost" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" name="image" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Product</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Manage Users Section -->
+            <div id="manage-users" class="content-section card">
+                <div class="card-header">
+                    <h2>Manage Users</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for user in users %}
+                            <li class="list-group-item">
+                                {{ user[1] }} ({{ user[2] }})
+                                <a href="/edituser/{{ user[0] }}" class="btn btn-warning btn-sm float-end">Edit</a>
+                                <a href="/delete_user/{{ user[0] }}" class="btn btn-danger btn-sm float-end me-2" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                {% if user.is_pending %}
+                                    <a href="/approve_admin/{{ user[0] }}" class="btn btn-success btn-sm float-end me-2">Approve Admin</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pending Admin Approvals Section -->
+            <div id="manage-admins" class="content-section card">
+                <div class="card-header">
+                    <h2>Pending Admin Approvals</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for pending_admin in pending_admins %}
+                            <li class="list-group-item">
+                                {{ pending_admin[1] }} ({{ pending_admin[2] }})
+                                {% if session['admin_id'] == pending_admin[0] %}
+                                    <a href="/approve_admin/{{ pending_admin[0] }}" class="btn btn-success btn-sm float-end">Approve Myself</a>
+                                {% else %}
+                                    <a href="/approve_admin/{{ pending_admin[0] }}" class="btn btn-success btn-sm float-end">Approve Admin</a>
+                                {% endif %}
+                                <a href="/delete_admin/{{ pending_admin[0] }}" class="btn btn-danger btn-sm float-end me-2" onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+
+            <!-- Orders Section -->
+            <div id="orders" class="content-section card">
+                <div class="card-header">
+                    <h2>Orders</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for order in orders %}
+                            <li class="list-group-item">
+                                <strong>Order ID: {{ order[0] }}</strong> - {{ order[3] }}
+                                <br>
+                                User: {{ order.user_name }} ({{ order.user_email }})
+                                <br>
+                                Products:
+                                <ul>
+                                    {% for item in order.items %}
+                                        <li>{{ item.product_name }} (KES {{ item.price }})</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="/update_order/{{ order[0] }}" class="btn btn-info btn-sm float-end">Update Status</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Existing Products Section -->
+            <div id="products" class="content-section row">
+                {% for category, items in products.items() %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm" style="border-radius: 10px; overflow: hidden;">
+                            <!-- Card Header -->
+                            <div class="card-header bg-primary text-white text-center py-3" style="border-radius: 10px 10px 0 0;">
+                                <h4 style="font-size: 20px; font-weight: bold; margin: 0;">{{ category }}</h4>
+                            </div>
+            
+                            <!-- Product Items -->
+                            <ul class="list-group list-group-flush" style="padding: 10px;">
+                                {% for item in items %}
+                                <li class="list-group-item d-flex align-items-center" style="border: none; padding: 10px 0;">
+                                    <img src="../static/images/{{ item[4] }}" 
+                                         alt="{{ item[1] }}" 
+                                         class="img-thumbnail me-3" 
+                                         style="max-width: 80px; max-height: 80px; border-radius: 5px;">
+            
+                                    <div>
+                                        <p style="margin: 0; font-size: 16px; font-weight: bold;">{{ item[1] }}</p>
+                                        <p style="margin: 0; font-size: 14px; color: #555;">KES {{ item[3] }}</p>
+            
+                                        <div class="mt-2">
+                                            <a href="/edit_product/{{ item[0] }}" class="btn btn-sm btn-warning me-2">Edit</a>
+                                            <a href="/delete_product/{{ item[0] }}" class="btn btn-sm btn-danger" 
+                                               onclick="return confirm('Are you sure you want to delete this product?');">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            
+
+        </div>
+
+        <br>
+        <div class="button-container">
+            <a href="/" class="btn btn-danger back">Back to Home</a>
+        </div>
+        
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Show the dashboard section by default
+        showSection('dashboard');
+    </script>
+
+   
+
+</body>
+</html>

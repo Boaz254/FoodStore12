@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- css supporting files -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- jss supporting files -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .body{
+            background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 300px;
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Product Grid Styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #20c997;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    color: #dc3545
+}
+.name{ 
+    color: #d63384
+}
+
+.add-to-cart {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none; 
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+/* Pagination Styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.page-link {
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    color: #0056b3;
+}
+
+.page-info {
+    font-size: 16px;
+    font-weight: bold;
+}
+.pro{
+    background-image: url("{{ url_for('static', filename='images/pro.jpg') }}");
+    background-color: #a9f5f0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+        
+        
+    </style>
+</head>
+<body class="body">
+
+<!-- Breadcrumb Navigation -->
+{% include 'navbar.html' %}
+
+<div class="container mt-4">
+    <div class="pro">
+        <h1 class="text-center mb-4 text-success">Our Products</h1>
+    </div>
+    <br>
+
+
+    <!-- Search Bar -->
+    <form action="{{ url_for('search_products') }}" method="get" class="search-bar">
+        <input type="text" name="query" placeholder="Search for products..." value="{{ query or '' }}" class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+            {% for product in products %}
+          
+                <div class="product-card">
+                    <img src="{{ url_for('static', filename='images/' + product[4]) }}" alt="{{ product[1] }}" class="product-image">
+                    <h2 class="name">{{ product[1] }}</h2>
+                    <p>{{ product[2] }}</p>
+                    <p><strong>Category:</strong> {{ product[5] }}</p>
+                    <p><strong>Price:</strong> KES {{ product[3] }}</p>
+                    <a href="/login" class="add-to-cart">Add to Cart</a>
+                </div>         
+            {% endfor %}
+        
+    </div>
+
+    <!-- Pagination Links -->
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="?query={{ query }}&page={{ page - 1 }}" class="page-link">&laquo; Previous</a>
+        {% endif %}
+        <span class="page-info">Page {{ page }} of {{ total_pages }}</span>
+        {% if page < total_pages %}
+            <a href="?query={{ query }}&page={{ page + 1 }}" class="page-link">Next &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+{% include 'footer.html' %}
+
+
+    
+</body>
+</html>
+
+
