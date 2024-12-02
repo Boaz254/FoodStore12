@@ -16,13 +16,32 @@
     <script src="../static/js/lightslider.js"></script>
     <script src="../static/js/script.js"></script>
 
+    <style>
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+    </style>
+
    
 </head>
 <body >
 
     <h2 class="text-secondary">Manage Users</h2>
 
-    <!-- Flash Messages Section -->
+    
     {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -43,7 +62,7 @@
                 <ul class="list-group">
                     {% for user in users %}
                         <li class="list-group-item">
-                            <strong>{{ user[1] }}</strong> ({{ user[2] }}) <!-- username and email -->
+                            <strong>{{ user[1] }}</strong> ({{ user[2] }}) 
                             <br>
                             Gender: {{ user[3] }}
                             <br>

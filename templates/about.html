@@ -106,6 +106,22 @@
             margin: 0 auto;
             padding: 20px;
         }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -120,11 +136,11 @@
     </div>
     <br>
 
-    <!-- Main Content -->
+   
     <div class="about-container">
         
 
-        <!-- About Section -->
+      
         <div class="about-section">
             <div class="about-text">
                 <h2>About Food Store</h2>
@@ -138,7 +154,7 @@
             </div>
         </div>
 
-        <!-- Unique Section -->
+      
         <div class="unique-section">
             <h2>What Makes Us Unique</h2>
             <p>
@@ -148,7 +164,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+   
     {% include 'footer.html' %}
 
 </body>

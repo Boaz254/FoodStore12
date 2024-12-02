@@ -6,19 +6,35 @@
     <title>Upload</title>
     <link rel="stylesheet" href="../static/css/bootstrap.css">
     <style>
-        /* Apply the background image to the entire body */
+        
         .body {
             background-image:  url("{{ url_for('static', filename='images/240_F_939373128_AzG636Avw2NnDkDKBs9YyZ4zQFMIAtKv.jpg') }}");
-            background-size: cover;         /* Ensures the image covers the whole screen */
-            background-position: center;    /* Centers the image */
-            background-attachment: fixed;   /* Keeps the image fixed on scroll */
-            background-repeat: no-repeat;   /* Prevents tiling */
+            background-size: cover;         
+            background-position: center;   
+            background-attachment: fixed;   
+            background-repeat: no-repeat;   
         }
         
-        /* Additional styles to adjust text readability over background */
+        
         .card {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            background-color: rgba(255, 255, 255, 0.9); 
             border-radius: 10px;
+        }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>

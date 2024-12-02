@@ -6,28 +6,44 @@
     <title>FoodStore</title>
 <style>
     .promo-marquee {
-        background-color: #28a745; /* Green background */
-        color: white; /* White text color */
-        padding: 10px; /* Padding around the text */
-        font-size: 1.2em; /* Font size */
-        overflow: hidden; /* Hide overflow */
-        white-space: nowrap; /* Prevent text wrapping */
-        position: relative; /* Required for absolute positioning of inner span */
+        background-color: #28a745; 
+        color: white; 
+        padding: 10px; 
+        font-size: 1.2em; 
+        overflow: hidden; 
+        white-space: nowrap; 
+        position: relative; 
     }
 
     .marquee-content {
-        display: inline-block; /* Allow for animation */
-        animation: marquee 10s linear infinite; /* Animation settings */
+        display: inline-block; 
+        animation: marquee 10s linear infinite; 
     }
 
     @keyframes marquee {
         0% {
-            transform: translateX(100%); /* Start from right */
+            transform: translateX(100%); 
         }
         100% {
-            transform: translateX(-100%); /* End on the left */
+            transform: translateX(-100%); 
         }
     }
+    /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
 </style>
 
     

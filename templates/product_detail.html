@@ -33,10 +33,10 @@
 
 
 <div class="product-gallery">
-    <!-- Main Image -->
+    
     <img src="{{ product.product_image_name }}" alt="{{ product.product_name }}" id="main-image" class="main-image">
 
-    <!-- Thumbnail Images -->
+    
     <div class="thumbnails">
         <img src="{{ product.product_image_name }}" alt="{{ product.product_name }}" onclick="setMainImage(this.src)">
         {% for image in images %}
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<!-- JavaScript for image switcher -->
+
 <script>
     function setMainImage(src) {
         document.getElementById("main-image").src = src;

@@ -30,6 +30,22 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body class="body">
@@ -52,10 +68,10 @@
                 <tbody>
                     {% for item in cart_items %}
                         <tr>
-                            <td>{{ item[1] }}</td> <!-- Product name -->
-                            <td>{{ item[3] }}</td> <!-- Product price -->
-                            <td>1</td> <!-- Quantity, static for simplicity -->
-                            <td>{{ item[3] }}</td> <!-- Subtotal assuming quantity is 1 -->
+                            <td>{{ item[1] }}</td> 
+                            <td>{{ item[3] }}</td> 
+                            <td>1</td> 
+                            <td>{{ item[3] }}</td> 
                         </tr>
                     {% endfor %}
                     <tr>
@@ -65,7 +81,7 @@
                 </tbody>
             </table>
     
-            <!-- Delivery Details Form -->
+            
             <form action="{{ url_for('checkout') }}" method="POST">
                 <h4 class="text-center text-primary">Delivery Information</h4>
                 <div class="mb-3">
@@ -81,7 +97,7 @@
                     <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="2547XXXXXXXX" required>
                 </div>
 
-                <!-- Payment Selection and M-Pesa Integration -->
+                
                 <div class="mb-3">
                     <label for="payment" class="form-label">Payment Method</label>
                     <select id="payment" name="payment_method" class="form-select" required>
@@ -90,7 +106,7 @@
                     </select>
                 </div>
                 
-                <!-- M-Pesa Payment Details -->
+               
                 <div id="mpesa_payment_section">
                     <input type="hidden" name="total_cost" value="{{ total_cost }}">
                     <h4 class="text-center mt-3 text-success">Proceed to M-Pesa Payment</h4>
@@ -100,7 +116,7 @@
                     </div>
                 </div>
 
-                <!-- Submit Order Button -->
+            
                 <button type="submit" class="btn btn-primary w-100 mt-3">Place Order</button>
             </form>
     

@@ -35,7 +35,7 @@
         <div class="confirmation-container mx-auto col-md-8">
             <h2 class="text-center text-success">Payment Confirmation</h2>
 
-            <!-- Order Details -->
+          
             <div class="mt-4">
                 <h4 class="text-danger">Order Summary</h4>
                 <p><strong>Order ID:</strong> {{ order_id }}</p>
@@ -43,7 +43,7 @@
                 <p><strong>Delivery Address:</strong> {{ delivery_address }}</p>
             </div>
 
-            <!-- Confirmation Form -->
+         
             <form action="{{ url_for('payment_confirmation', order_id=order_id) }}" method="POST" class="mt-4">
                 <p class="text-center">Click below to confirm your payment and place the order.</p>
                 <button type="submit" class="btn btn-primary w-100">Confirm Payment & Place Order</button>

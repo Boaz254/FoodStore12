@@ -5,6 +5,24 @@
     <title>Edit Product</title>
     <link rel="stylesheet" href="../static/css/bootstrap.css">
     <script src="../static/js/bootstrap.js"></script>
+    <style>
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -36,7 +54,7 @@
                 <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control" name="image">
             </div>
-            <input type="hidden" name="existing_image" value="{{ product[4] }}">  <!-- Store existing image name -->
+            <input type="hidden" name="existing_image" value="{{ product[4] }}">  
             <button type="submit" class="btn btn-primary">Update Product</button>
             <a href="/admin" class="btn btn-secondary">Cancel</a>
         </form>

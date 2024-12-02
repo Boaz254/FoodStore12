@@ -2,12 +2,12 @@
 
 <style>
   .carousel-inner .carousel-item img {
-      height: 500px; /* Set a consistent height for all slides */
-      object-fit: cover; /* Ensures the images fill the width and height without distortion */
+      height: 500px; 
+      object-fit: cover; 
   }
 
   .carousel-caption {
-      background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for better readability */
+      background: rgba(0, 0, 0, 0.4); 
       padding: 20px;
       border-radius: 5px;
   }
@@ -15,7 +15,7 @@
   .carousel-caption h5 {
       font-size: 2em;
       font-weight: bold;
-      color: #ffcc00; /* Brighter color for the title */
+      color: #ffcc00; 
   }
 
   .carousel-caption p {
@@ -23,30 +23,30 @@
       color: #ffffff;
   }
 
-  /* Custom arrow styling */
+  
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
-      filter: invert(100%); /* Makes the arrows white for visibility */
-      background-color: rgba(0, 0, 0, 0.3); /* Adds a background for better contrast */
+      filter: invert(100%); 
+      background-color: rgba(0, 0, 0, 0.3); 
       border-radius: 50%;
       padding: 10px;
   }
 
-  /* Indicator styling */
+ 
   .carousel-indicators button {
-      background-color: #ffcc00; /* Matches the accent color of the site */
+      background-color: #ffcc00; 
       width: 12px;
       height: 12px;
       border-radius: 50%;
       opacity: 0.7;
   }
   .carousel-indicators .active {
-      background-color: #ff8c00; /* Brighter color for active indicator */
+      background-color: #ff8c00; 
       opacity: 1;
   }
-  /* Marquee styling */
+ 
   .marquee-container {
-      background-color: #ffcc00; /* Bright background for visibility */
+      background-color: #ffcc00; 
       color: #ec0d0d;
       padding: 30px 0;
       font-weight: bold;
@@ -64,6 +64,22 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
   }
+  /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
 </style>
 
 <div class="marquee-container">

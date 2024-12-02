@@ -229,12 +229,23 @@
     padding: 5px 10px;
     border-radius: 5px;
 }
+/* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-        
-        
-        
-        
-        
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+
     </style>
 </head>
 <body class="body">
@@ -279,27 +290,27 @@
 
                 <br>
                 
-                <!-- Stats Cards -->
+                
                 <div class="dashboard-stats">
                     <div class="stat-card">
                         <i class="fas fa-users"></i>
                         <h3>Total Users</h3>
-                        <p>1</p> <!-- Dynamic data could be added here -->
+                        <p>1</p> 
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-box"></i>
                         <h3>Orders Received</h3>
-                        <p></p> <!-- Dynamic data -->
+                        <p></p> 
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-apple-alt"></i> <!-- Fruit Icon -->
+                        <i class="fas fa-apple-alt"></i> 
                         <h3>Total Products</h3>
-                        <p>50</p> <!-- Dynamic data -->
+                        <p>50</p> 
                     </div>
                     <div class="stat-card">
                         <i class="fas fa-dollar-sign"></i>
                         <h3>Revenue</h3>
-                        <p>KES 0</p> <!-- Dynamic data -->
+                        <p>KES 0</p> 
                     </div>
                 </div>
 
@@ -315,7 +326,7 @@
             
             
         
-            <!-- Add New Product Section -->
+            
             <div id="add-product" class="content-section product-grid card">
                 <div class="card-header">
                     <h2>Add New Product</h2>
@@ -354,7 +365,7 @@
                 </div>
             </div>
 
-            <!-- Manage Users Section -->
+           
             <div id="manage-users" class="content-section card">
                 <div class="card-header">
                     <h2>Manage Users</h2>
@@ -375,7 +386,7 @@
                 </div>
             </div>
 
-            <!-- Pending Admin Approvals Section -->
+            
             <div id="manage-admins" class="content-section card">
                 <div class="card-header">
                     <h2>Pending Admin Approvals</h2>
@@ -398,7 +409,7 @@
             </div>
             
 
-            <!-- Orders Section -->
+           
             <div id="orders" class="content-section card">
                 <div class="card-header">
                     <h2>Orders</h2>
@@ -424,17 +435,17 @@
                 </div>
             </div>
 
-            <!-- Existing Products Section -->
+            
             <div id="products" class="content-section row">
                 {% for category, items in products.items() %}
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm" style="border-radius: 10px; overflow: hidden;">
-                            <!-- Card Header -->
+                           
                             <div class="card-header bg-primary text-white text-center py-3" style="border-radius: 10px 10px 0 0;">
                                 <h4 style="font-size: 20px; font-weight: bold; margin: 0;">{{ category }}</h4>
                             </div>
             
-                            <!-- Product Items -->
+                           
                             <ul class="list-group list-group-flush" style="padding: 10px;">
                                 {% for item in items %}
                                 <li class="list-group-item d-flex align-items-center" style="border: none; padding: 10px 0;">
@@ -483,7 +494,7 @@
             document.getElementById(sectionId).style.display = 'block';
         }
 
-        // Show the dashboard section by default
+        
         showSection('dashboard');
     </script>
 

@@ -20,11 +20,11 @@
     <script src="../static/js/jquery-3.5.1.slim.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-    .body{
-            background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+.body{
+    background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
         }
 .container {
@@ -65,7 +65,7 @@
     background-color: #0056b3;
 }
 
-/* Product Grid Styling */
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* 3 columns */
@@ -115,7 +115,7 @@
     background-color: #218838;
 }
 
-/* Pagination Styling */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -149,13 +149,30 @@
     background-repeat: no-repeat;
 }
 
+/* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+
         
         
     </style>
 </head>
 <body class="body">
 
-<!-- Breadcrumb Navigation -->
+
 {% include 'navbar.html' %}
 
 <div class="container mt-4">
@@ -165,13 +182,13 @@
     <br>
 
 
-    <!-- Search Bar -->
+  
     <form action="{{ url_for('search_products') }}" method="get" class="search-bar">
         <input type="text" name="query" placeholder="Search for products..." value="{{ query or '' }}" class="search-input">
         <button type="submit" class="search-button">Search</button>
     </form>
 
-    <!-- Product Grid -->
+  
     <div class="product-grid">
             {% for product in products %}
           
@@ -187,7 +204,7 @@
         
     </div>
 
-    <!-- Pagination Links -->
+    
     <div class="pagination">
         {% if page > 1 %}
             <a href="?query={{ query }}&page={{ page - 1 }}" class="page-link">&laquo; Previous</a>

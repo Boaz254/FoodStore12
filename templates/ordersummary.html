@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="../static/css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/lightslider.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +43,7 @@
                     Your order has been placed successfully and is being processed. Here are your order details:
                 </p>
 
-                <!-- Display delivery and order details -->
+                
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Delivery Address:</strong> {{ address }}</li>
                     <li class="list-group-item"><strong>Contact Phone:</strong> {{ phone }}</li>

@@ -17,10 +17,8 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
-    <head>
-        <!-- Other head elements -->
-        <style>
-            /* General body styling */
+    <style>
+            
             .body {
                 background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
                 background-size: cover;
@@ -30,7 +28,7 @@
                 font-family: Arial, sans-serif;
             }
         
-            /* Styling for the introduction section with image */
+          
             .intro-section {
                 display: flex;
                 align-items: center;
@@ -53,7 +51,7 @@
                 font-size: 1.5rem;
             }
         
-            /* Styling for the contact form and details */
+            
             .contact-section {
                 display: flex;
                 justify-content: center;
@@ -94,7 +92,7 @@
                 color: #3498db;
             }
         
-            /* Styling for contact details */
+            
             .contact-details h1 {
                 color: #eb0808;
                 font-size: 1.5rem;
@@ -114,12 +112,28 @@
                 background-position: center;
                 background-repeat: no-repeat;
             }
+            /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
         </style>
         
-        <body class="body">
-            {% include 'navbar.html' %}
+<body class="body">
+    {% include 'navbar.html' %}
 
-            <br>
+    <br>
 
             <div class="pro">
                 <h1 class="text-center mb-4 text-success">Talk To Us</h1>
@@ -128,7 +142,7 @@
         
             <br>
         
-            <!-- Introduction Section with Image and Text -->
+            
             <div class="intro-section">
                 <img src="{{ url_for('static', filename='images/contact-us-2993000_1280.jpg') }}" alt="Contact Us">
                 <p class="intro-text">
@@ -141,9 +155,9 @@
             <br>
             
         
-            <!-- Contact Form and Contact Details Section -->
+            
             <div class="contact-section">
-                <!-- Contact Form -->
+             
                 <div class="Form">
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label custom-label">Phone Number</label>
@@ -161,7 +175,7 @@
                     <button class="btn btn-primary" type="submit">Send Message</button>
                 </div>
         
-                <!-- Contact Details -->
+                
                 <div class="contact-details">
                     <h1>Contact Details</h1>
                     <p>
@@ -175,9 +189,7 @@
         
             <br>
         
-            {% include 'footer.html' %}
-        </body>
-        
-    </body>
+            {% include 'footer.html' %}  
+</body>
     </html>
     

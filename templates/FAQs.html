@@ -17,7 +17,7 @@
     <script src="../static/js/script.js"></script>
 
     <style>
-        /* Existing styles */
+       
         .body {
             background-image: url("{{ url_for('static', filename='images/search-1756278_1280.jpg') }}");
             background-size: cover;
@@ -50,7 +50,7 @@
 
         }
 
-        /* Flexbox container to align accordion and form side-by-side */
+        
         .faq-layout {
             display: flex;
             gap: 20px;
@@ -59,12 +59,26 @@
             max-width: 1200px;
         }
 
-        /* Adjust for smaller screens */
+        /* Responsive design for mobile */
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
             .faq-layout {
                 flex-direction: column;
             }
         }
+
     </style>
 </head>
 <body class="body">

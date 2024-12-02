@@ -15,6 +15,22 @@
             padding: 20px;
             border-radius: 10px;
         }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -27,17 +43,17 @@
             </div>
         
             <div class="col-md-6 row1">
-                <!-- Title -->
+             
                 <h3 class="text-warning">{{ product[1] }}</h3>
-                <p>{{ product[2] }}</p> <!-- Description -->
+                <p>{{ product[2] }}</p> 
                 <b class="text-primary">Category: {{ product[5] }}</b>
                 <br>
                 <b class="text-danger">Cost: Kshs. {{ product[3] }}</b> 
                 <br><br>
         
-                <!-- Check if user is logged in -->
+                
                 {% if session['key'] %}
-                    <!-- Add to Cart Form -->
+                    
                     <h4>Add to Cart</h4>
                     <form action="{{ url_for('cart') }}" method="post">
                         <input type="hidden" name="product_id" value="{{ product[0] }}">
@@ -46,7 +62,7 @@
                     </form>
                     <br>
         
-                    <!-- Proceed to Checkout Option -->
+                    
                     <h4>Proceed to Checkout</h4>
                     <form action="{{ url_for('checkout') }}" method="post">
                         <input type="hidden" name="product_id" value="{{ product[0] }}">
@@ -55,7 +71,7 @@
                         <button type="submit" class="btn btn-success">Go to Checkout</button>
                     </form>
                 {% else %}
-                    <!-- User is not logged in -->
+                   
                     <h4 class="text-dark">Please sign in to make a purchase</h4>
                     <a href="/login" class="btn btn-danger btn-sm">Login</a>
                 {% endif %}

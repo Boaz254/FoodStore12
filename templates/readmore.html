@@ -97,10 +97,10 @@
         }
 
         .team-member img {
-            width: 80px; /* Size of the circle */
-            height: 80px; /* Ensure the image is square */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image covers the circle */
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            object-fit: cover; 
             display: block;
             margin: 0 auto 20px; 
         
@@ -162,14 +162,14 @@
             font-size: 1.1rem;
             color: #333;
         }
-        /* Section styling */
+        
         .section4 {
             padding: 40px;
             background-color: #f0f8ff;
             text-align: center;
         }
 
-        /* Section heading styling */
+        
         .section4 h2 {
             font-size: 2rem;
             color: #333;
@@ -181,19 +181,19 @@
             animation: fadeInDown 1s ease-in-out;
         }
 
-        /* Icon styling in heading */
+        
         .section4 h2 .icon {
             color: #0dcaf0;
         }
 
-        /* Contact information container */
+        
         .contact-info {
             max-width: 500px;
             margin: 0 auto;
             text-align: left;
         }
 
-        /* Contact info item styling */
+        
         .contact-info p {
             font-size: 1.1rem;
             color: #333;
@@ -208,19 +208,19 @@
             cursor: pointer;
         }
 
-        /* Hover effect for contact info items */
+        
         .contact-info p:hover {
             transform: scale(1.05);
             background-color: #e6f7ff;
         }
 
-        /* Icon styling in contact info items */
+        
         .contact-info .icon {
             font-size: 1.5rem;
             color: #0dcaf0;
         }
 
-        /* Fade-in animation */
+        
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -234,6 +234,22 @@
         .color1{
             color: #f02f2f;
         }
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+        }
     </style>
 
 </head>
@@ -242,7 +258,7 @@
     {% include 'navbar.html' %}
 
 <div class="container">
-    <!-- Mission, Vision, and Core Values Section -->
+   
     <div class="section">
         <div class="section-card">
             <h2><i class="fas fa-bullseye icon"></i>Our Mission</h2>
@@ -259,7 +275,7 @@
     </div>
     <br>
 
-    <!-- Customer Reviews Section -->
+    
     <div class="section1">
         <h2><i class="fas fa-comments icon"></i>Customer Reviews</h2>
         <ul id="customer-reviews" class="lightSlider">
@@ -282,7 +298,7 @@
     <br>
 
 
-    <!-- Our Team Section -->
+   
     <div class="section3">
         <h2><i class="fas fa-users icon"></i>Our Team</h2>
         <div class="team-container">
@@ -305,7 +321,7 @@
     </div>
     </div>
 
-    <!-- Contact Information Section -->
+    
     <div class="section4">
         <h2><i class="fas fa-envelope icon"></i>Contact Information</h2>
         <div class="contact-info">
@@ -323,15 +339,15 @@
             item: 1,
             auto: true,
             loop: true,
-            pager: true,        // Show dots for navigation
-            controls: false,    // Hide next/previous controls
-            adaptiveHeight: true, // Automatically adjust height to fit content
+            pager: true,        
+            controls: false,    
+            adaptiveHeight: true, 
             slideMargin: 10,
             enableDrag: true,
-            speed: 800,         // Increase transition speed for smoother effect
+            speed: 800,         
             pauseOnHover: true,
             onSliderLoad: function(el) {
-                el.lightGallery({ // Initialize lightGallery if you want an image gallery option
+                el.lightGallery({ 
                     selector: '#customer-reviews .review-item'
                 });
             }
