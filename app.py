@@ -11,10 +11,21 @@ import os
 
 app.config['UPLOAD_FOLDER'] = os.path.join('static', 'images', 'upload')
 
+
+
+def get_connection():
+    return pymysql.connect(
+        host=os.getenv("DB_HOST", "localhost"),       
+        user=os.getenv("DB_USER", "root"),            
+        password=os.getenv("DB_PASSWORD", ""),        
+        database=os.getenv("DB_NAME", "foodmarket")   
+    )
+
+
 @app.route("/")
 def Homepage():
 
-    connection  = pymysql.connect(host="localhost",user="root",password="",database="foodmarket")
+    connection = get_connection()
     sql = "select* from Products where product_category = 'Fruits' "
     sql1 = "select* from Products where product_category = 'Vegetables' "
     sql2 = "select* from Products where product_category = 'Dairy' "
@@ -49,7 +60,7 @@ def Homepage():
 def single(product_id):
 
 
-    connection  = pymysql.connect(host="localhost",user="root",password="",database="foodmarket")
+    connection  = get_connection()
 
   
     sql = "select * from Products where product_id = %s "
@@ -82,7 +93,7 @@ def upload_products():
         product_image_name = request.form['product_image_name']
 
        
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         Cursor = connection.cursor()
 
         
@@ -117,7 +128,7 @@ def products():
     offset = (page - 1) * items_per_page
 
     # Database connection
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     with connection.cursor() as cursor:
       
         cursor.execute("SELECT COUNT(*) FROM Products")
@@ -134,7 +145,7 @@ def products():
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     with connection.cursor() as cursor:
         
         cursor.execute("SELECT * FROM Products WHERE product_id = %s", (product_id,))
@@ -156,7 +167,7 @@ def search_products():
     offset = (page - 1) * items_per_page
 
     # Database connection
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     with connection.cursor() as cursor:
        
         search_count_sql = """
@@ -183,7 +194,7 @@ def search_products():
 
 @app.route('/editproduct/<int:product_id>', methods=['GET', 'POST'])
 def edit_product(product_id):
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     
     try:
         cursor = connection.cursor()
@@ -236,7 +247,7 @@ def edit_product(product_id):
 
 @app.route('/delete_product/<int:product_id>', methods=['GET', 'POST'])
 def delete_product(product_id):
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     try:
         cursor = connection.cursor()
         cursor.execute("DELETE FROM Products WHERE product_id = %s", (product_id,))
@@ -255,7 +266,7 @@ def manage_users():
     
 
 
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     try:
         with connection.cursor() as cursor:
         
@@ -276,7 +287,7 @@ def manage_users():
 def delete_admin(admin_id):
    
     if session.get("is_admin") and session.get("approval_status") == "approved":
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         try:
             with connection.cursor() as cursor:
                 sql = "DELETE FROM admin WHERE id = %s AND approval_status = 'pending'"
@@ -295,7 +306,7 @@ def view_orders():
     if not session.get('is_admin'):
         return "Access Denied: Admins Only", 403
 
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     cursor = connection.cursor()
 
     try:
@@ -323,7 +334,7 @@ def delete_user(user_id):
     if not session.get('is_admin'):
         return "Access Denied: Admins Only", 403
 
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     cursor = connection.cursor()
 
     sql = "DELETE FROM user WHERE id = %s"  
@@ -346,7 +357,7 @@ def delete_user(user_id):
 @app.route('/edituser/<int:user_id>', methods=['GET'])
 def edit_user(user_id):
    
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     user = None
     try:
         with connection.cursor() as cursor:
@@ -376,7 +387,7 @@ def update_user(user_id):
     phone = request.form['phone']
 
 
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     try:
         with connection.cursor() as cursor:
            
@@ -425,7 +436,7 @@ def Register():
         user_type = request.form['user_type'] 
 
 
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         cursor = connection.cursor()
 
         email_check_query = "SELECT * FROM user WHERE email = %s"
@@ -470,7 +481,7 @@ def login():
         user_type = request.form['user_type']
 
     
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         cursor = connection.cursor()
 
         if user_type == "user":
@@ -586,7 +597,7 @@ def mpesa_payment():
 
         if stk_response.status_code == 200:
             
-            connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+            connection  = get_connection()
             cursor = connection.cursor()
             
          
@@ -629,7 +640,7 @@ def payment_confirmation(order_id):
         return redirect("/") 
 
     
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     cursor = connection.cursor()
     query = "SELECT * FROM orders WHERE order_id = %s"
     cursor.execute(query, (order_id,))
@@ -679,7 +690,7 @@ def admin():
             image_file.save(image_path)
 
            
-            connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+            connection  = get_connection()
             try:
                 with connection.cursor() as cursor:
                     sql = """
@@ -695,7 +706,7 @@ def admin():
                 return redirect('/admin')
 
 
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     products = {}
     users = []
     orders = []
@@ -736,7 +747,7 @@ def admin_login():
         password = request.form['password']
 
        
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket", charset="utf8mb4")
+        connection  = get_connection()
         try:
             with connection.cursor() as cursor:
                 
@@ -782,7 +793,7 @@ def admin_login():
 def approve_admin(admin_id):
    
     if session.get('approval_status') == 'approved':
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         try:
             with connection.cursor() as cursor:
                
@@ -832,7 +843,7 @@ def cart():
    
     cart_items = []
     if session['cart']:
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         try:
             with connection.cursor() as cursor:
                 
@@ -855,7 +866,7 @@ def checkout():
 
     
     if 'cart' in session and session['cart']:
-        connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+        connection  = get_connection()
         try:
             with connection.cursor() as cursor:
                 for product_id in session['cart']:
@@ -940,7 +951,7 @@ def delivery():
     total_cost = request.form.get('total_cost')
 
   
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     try:
         with connection.cursor() as cursor:
             
@@ -970,7 +981,7 @@ def place_order():
     created_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
     delivery_address = ""
     
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     cursor = connection.cursor()
 
    
@@ -1016,7 +1027,7 @@ def place_order():
 
 @app.route('/ordersummary/<int:order_id>')
 def order_summary(order_id):
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     cursor = connection.cursor()
 
    
@@ -1039,7 +1050,7 @@ def subscribe():
     email = request.form.get('email')
 
     
-    connection = pymysql.connect(host="localhost", user="root", password="", database="foodmarket")
+    connection  = get_connection()
     try:
         with connection.cursor() as cursor:
           
